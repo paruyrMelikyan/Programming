@@ -1,4 +1,4 @@
-class Hrdeh {
+class Rain {
     constructor(x, y, index) {
         this.x = x;
         this.y = y;
@@ -54,26 +54,21 @@ class Hrdeh {
             this.energy--;
             matrix[this.y][this.x] = 0;
             this.x = vand[0]; this.y = vand[1];
-            matrix[this.y][this.x] = 4;
+            matrix[this.y][this.x] = 5;
         }
     }
     
     utel() {
         this.energy--;
-        var vand = random(this.yntrelVandak(3));
+        var vand = random(this.yntrelVandak(4));
         if (vand && this.multiply >= this.speed / 2) {
             this.energy += this.speed / 2;
             matrix[this.y][this.x] = 0;
             this.x = vand[0]; this.y = vand[1];
-            matrix[this.y][this.x] = 4;
-            for (var i in gishatichArr) {
-                if (gishatichArr[i].x == this.x && gishatichArr[i].y == this.y) {
-                    gishatichArr.splice(i, 1);
-                }
-            }
-            for (var i in xotakerArr) {
-                if (xotakerArr[i].x == this.x && xotakerArr[i].y == this.y) {
-                    xotakerArr.splice(i, 1);
+            matrix[this.y][this.x] = 5;
+            for (var i in hrdehArr) {
+                if (hrdehArr[i].x == this.x && hrdehArr[i].y == this.y) {
+                    hrdehArr.splice(i, 1);
                 }
             }
         }
@@ -84,8 +79,8 @@ class Hrdeh {
         var vand = random(this.yntrelVandak(0));
         if (vand && this.energy >= this.speed) {
             this.energy = 1;
-            var newhrdeh = new Hrdeh(vand[0], vand[1], 4);
-            hrdehArr.push(newhrdeh);
+            var newrain = new Rain(vand[0], vand[1], 5);
+            rainArr.push(newrain);
         }
     }
 
@@ -93,8 +88,8 @@ class Hrdeh {
         if (this.energy <= -(this.speed / 2)) {
             matrix[this.y][this.x] = 0;
             for (var i in hrdehArr) {
-                if (hrdehArr[i].x == this.x && hrdehArr[i].y == this.y) {
-                    hrdehArr.splice(i, 1);
+                if (rainArr[i].x == this.x && rainArr[i].y == this.y) {
+                    rainArr.splice(i, 1);
                 }
             }
         }
