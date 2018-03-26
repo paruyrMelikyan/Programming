@@ -23,8 +23,8 @@ var w = 30;
 var h = 30;
 var side = 16;
 var grassArr = [], xotakerArr = [], gishatichArr = [], hrdehArr = [], rainArr = [], argelqArr = [];
-exanak = "aa";
-
+exanak = "";
+          
 function weather() {
     setTimeout(function () { exanak = "Գարուն"; console.log(exanak); }, 2500);
     setTimeout(function () { exanak = "Ամառ"; console.log(exanak); }, 5000);
@@ -34,18 +34,39 @@ function weather() {
 
 weather();
 
-function mouseClicked() {
-    var xClick = Math.floor(mouseX / side);
-    var yClick = Math.floor(mouseY / side);
-    if (matrix[xClick][yClick])
-    for (var i in grassArr) {
-        if (grassArr[i].x == xClick && grassArr[i].y == yClick){
-            grassArr.splice(i,1);
-        }
-        
-    }
+function Mrrik(x, y) {
+    console.log("k-1");
+	for (var i in grassArr) {
+		if (grassArr[i].x == x && grassArr[i].y == y) {
+            grassArr.splice(i, 1);
+            console.log("xot");
+		}
+	}
+	for (var i in xotakerArr) {
+		if (xotakerArr[i].x == x && xotakerArr[i].y == y) {
+            xotakerArr.splice(i, 1);
+            console.log("xotaker");
+		}
+	}
+	for (var i in gishatichArr) {
+		if (gishatichArr[i].x == x && gishatichArr[i].y == y) {
+            gishatichArr.splice(i, 1);
+            console.log("gishatich");
+		}
+	}
+	for (let i in hrdehArr) {
+		if (hrdehArr[i].x == x && hrdehArr[i].y == y) {
+            hrdehArr.splice(i, 1);
+            console.log("hrdeh");
+		}
+	}
+	for (let i in rainArr) {
+		if (rainArr[i].x == x && rainArr[i].y == y) {
+            rainArr.splice(i, 1);
+            console.log("andzrev");
+		}
+	}
 }
-
 
 function setup() {
     matrix = genMatrix(w, h);
@@ -167,4 +188,13 @@ function draw() {
 
 
 
+}
+
+function mouseClicked() {   
+    var xClick = Math.floor(mouseX / side);
+    var yClick = Math.floor(mouseY / side);
+    if (xClick >= 0 && yClick >= 0 && xClick < matrix[0].length && yClick < matrix.length){    
+        Mrrik(xClick, yClick);
+        console.log("karevor 2");
+    }
 }
